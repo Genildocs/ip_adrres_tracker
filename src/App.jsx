@@ -5,7 +5,7 @@ import Informations from './components/Informations';
 
 function App() {
   const [data, setData] = useState([]);
-  const [ip, setIp] = useState('');
+  const [ip, setIp] = useState(' ');
 
   useEffect(() => {
     getAll(ip).then((res) => {
