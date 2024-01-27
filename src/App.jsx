@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       <div className="bg-[url('./assets/pattern-bg-mobile.png')] md:bg-[url('./assets/pattern-bg-desktop.png')] bg-no-repeat bg-cover h-[22rem]">
-        <h1 className="text-center text-2xl text-white font-semibold py-7">
+        <h1 className="text-center text-2xl text-white font-semibold py-7 ">
           IP Address Tracker
         </h1>
         <InputSearch setIp={setIp} />
