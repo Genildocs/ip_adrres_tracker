@@ -12,6 +12,7 @@
   }
 }
 
-#map {
-  height: calc(100vh - 468px);
+.leaflet-container {
+  height: calc(100vh - 350px);
+  z-index: -1;
 }
