@@ -16,3 +16,29 @@
   height: calc(100vh - 350px);
   z-index: -1;
 }
+
+.loading {
+  @apply mt-[10rem] bg-white h-[50px] rounded-lg flex justify-center items-center;
+}
+
+.load {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid rgb(8, 8, 8);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  margin-right: 0.5rem;
+  animation: moveIn 0.8s infinite alternate;
+}
+
+@keyframes moveIn {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "../../node_modules/leaflet/dist/leaflet.css";
+import React, { useEffect, useRef } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import '../../node_modules/leaflet/dist/leaflet.css';
 
 export default function LeafletMap({ coords }) {
   return (
     <MapContainer
       key={`${coords.lat}-${coords.lon}`}
       center={[coords.lat, coords.lon]}
-      zoom={14}
+      zoom={13}
       scrollWheelZoom={false}
     >
       <TileLayer

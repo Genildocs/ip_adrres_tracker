@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { SlArrowRight } from "react-icons/sl";
+import React, { useState, useEffect } from 'react';
+import { SlArrowRight } from 'react-icons/sl';
 
 export default function InputSearch({ setIp }) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const handleSearch = () => {
     setIp(search);
-    setSearch("");
+    setSearch('');
   };
 
   return (
-    <div className="flex items-center px-5">
+    <div className="flex items-center px-5  lg:justify-center">
       <input
         type="text"
         value={search}
         placeholder="Search for any IP address "
         onChange={(e) => setSearch(e.target.value)}
-        className="outline-none border-[1px] border-gray-300 h-  p-[0.5rem] w-[100%] rounded-l-md"
+        className="outline-none border-[1px] border-gray-300 h-  p-[0.5rem] w-[100%] rounded-l-md lg:basis-1/2"
       />
       <div className=" bg-very_dark_gray py-[0.6rem] px-4 rounded-br-md rounded-tr-md">
         <button onClick={handleSearch}>
