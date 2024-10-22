@@ -10,6 +10,7 @@ function App() {
   const [data, setData] = useState([]);
   const [ip, setIp] = useState('');
   const [coords, setCoords] = useState({ lat: 0, lon: 0 });
+  const [erro, setErro] = useState('');
 
   useEffect(() => {
     const getAll = async () => {
@@ -19,7 +20,8 @@ function App() {
         setData(data);
         setCoords({ lat: data.latitude, lon: data.longitude });
       } catch (error) {
-        console.error('Erro ao obter detalhes do IP: ', error);
+        console.error(error);
+        setErro('IP não encontrado');
       }
     };
     getAll();
@@ -32,7 +34,7 @@ function App() {
           IP Address Tracker
         </h1>
         <InputSearch setIp={setIp} />
-        <Informations data={data} />
+        <Informations data={data} erro={erro} />
       </div>
       <LeafletMap coords={coords} />
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Informations({ data }) {
+export default function Informations({ data, erro }) {
   return (
     <div className="px-4 mt-5 relative lg:flex lg:justify-center lg:items-center ">
       {data.length !== 0 ? (
@@ -30,6 +30,7 @@ export default function Informations({ data }) {
         <div className="lg:w-[80%] bg-white rounded-lg p-5 flex flex-col md:flex-row items-center gap-7 mt-[4rem] lg:justify-center">
           <div className="load"></div>
           <p>Carregando...</p>
+          {/* <div>{erro}</div> */}
         </div>
       )}
     </div>
