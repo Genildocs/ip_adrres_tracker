@@ -17,10 +17,6 @@
   z-index: -1;
 }
 
-.loading {
-  @apply mt-[10rem] bg-white h-[50px] rounded-lg flex justify-center items-center;
-}
-
 .load {
   width: 25px;
   height: 25px;

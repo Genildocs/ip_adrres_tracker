@@ -6,9 +6,8 @@ export default function Informations({ data }) {
       {data.length !== 0 ? (
         <div
           key={data.ip}
-          className="lg:w-[80%] bg-white rounded-lg p-5 flex flex-col md:flex-row items-center gap-7 mt-[4rem] lg:justify-center"
-        >
-          <div className="text-center">
+          className="lg:w-[80%] bg-white rounded-lg p-5 flex flex-col md:flex-row items-center gap-7 mt-[4rem] lg:justify-center">
+          <div role="section" className="text-center">
             <h2 className=" uppercase text-slate-500">IP Address</h2>
             <p className=" font-bold opacity-70">{data.ip}</p>
           </div>
@@ -28,7 +27,7 @@ export default function Informations({ data }) {
           </div>
         </div>
       ) : (
-        <div className="loading">
+        <div className="lg:w-[80%] bg-white rounded-lg p-5 flex flex-col md:flex-row items-center gap-7 mt-[4rem] lg:justify-center">
           <div className="load"></div>
           <p>Carregando...</p>
         </div>

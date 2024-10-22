@@ -1,20 +1,28 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
-import { getAll } from "./api/service";
-import InputSearch from "./components/InputSearch";
-import Informations from "./components/Informations";
-import LeafletMap from "./components/LeafletMap";
+import React, { useEffect, useState } from 'react';
+import InputSearch from './components/InputSearch';
+import Informations from './components/Informations';
+import LeafletMap from './components/LeafletMap';
+import axios from 'axios';
 
+const API_KEY = import.meta.env.VITE_APP_IP_GEOLOCATION_API_KEY;
 function App() {
   const [data, setData] = useState([]);
-  const [ip, setIp] = useState("");
+  const [ip, setIp] = useState('');
   const [coords, setCoords] = useState({ lat: 0, lon: 0 });
 
   useEffect(() => {
-    getAll(ip).then((res) => {
-      setCoords({ lat: res.latitude, lon: res.longitude });
-      setData(res);
-    });
+    const getAll = async () => {
+      try {
+        const URL = `https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}&ip=${ip}`;
+        const { data } = await axios.get(URL);
+        setData(data);
+        setCoords({ lat: data.latitude, lon: data.longitude });
+      } catch (error) {
+        console.error('Erro ao obter detalhes do IP: ', error);
+      }
+    };
+    getAll();
   }, [ip]);
 
   return (
