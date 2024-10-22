@@ -4,24 +4,34 @@ import InputSearch from './components/InputSearch';
 import Informations from './components/Informations';
 import LeafletMap from './components/LeafletMap';
 import axios from 'axios';
-
+import Loader from './components/Loader';
+import ResError from './components/ResError';
 const API_KEY = import.meta.env.VITE_APP_IP_GEOLOCATION_API_KEY;
 function App() {
   const [data, setData] = useState([]);
   const [ip, setIp] = useState('');
   const [coords, setCoords] = useState({ lat: 0, lon: 0 });
-  const [erro, setErro] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getAll = async () => {
       try {
-        const URL = `https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}&ip=${ip}`;
-        const { data } = await axios.get(URL);
+        setError('');
+        setIsLoading(true);
+        const res = await fetch(
+          `https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}&ip=${ip}`
+        );
+
+        if (!res.ok) throw new Error('Nenhum ip encontrato');
+        const data = await res.json();
         setData(data);
         setCoords({ lat: data.latitude, lon: data.longitude });
-      } catch (error) {
-        console.error(error);
-        setErro('IP não encontrado');
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
     };
     getAll();
@@ -34,7 +44,9 @@ function App() {
           IP Address Tracker
         </h1>
         <InputSearch setIp={setIp} />
-        <Informations data={data} erro={erro} />
+        {isLoading && <Loader />}
+        {!isLoading && !error && <Informations data={data} />}
+        {error && <ResError message={error} />}
       </div>
       <LeafletMap coords={coords} />
     </div>
